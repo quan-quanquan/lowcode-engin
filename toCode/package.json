@@ -1,0 +1,25 @@
+{
+  "name": "tocode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gen": "ts-node-esm src/generator/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/generator": "^7.23.5",
+    "@babel/parser": "^7.23.5",
+    "@babel/types": "^7.23.5",
+    "@types/babel__generator": "^7.6.7",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "3.1.0"
+  }
+}
