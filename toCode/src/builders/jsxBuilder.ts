@@ -1,20 +1,16 @@
 import * as t from '@babel/types'
 
-export function buildJsx (node: any) {
+export function buildJsx (ctx, node) {
   const open = t.jSXOpeningElement(
-    t.jSXIdentifier(node.componentName),
+    t.jSXIdentifier(node.componentName || 'div'),
     []
   )
-  if (!node.children) {
+  if (!ctx.children || !ctx.children.length) {
     open.selfClosing = true
     return t.jSXElement(open, null, [])
   }
-  const children:any = []
-  for (let i = 0; i < node.children.length; i++) {
-    children.push(buildJsx(node.children[i]))
-  }
   const close = t.jSXClosingElement(
-    t.jSXIdentifier(node.componentName)
+    t.jSXIdentifier(node.componentName || 'div')
   )
-  return t.jSXElement(open, close, children)
+  return t.jSXElement(open, close, ctx.children)
 }
