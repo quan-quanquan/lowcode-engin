@@ -1,10 +1,12 @@
 import schema from '../schema/base.json'
-import { buildJsx } from '../builders'
+import { buildJSX, buildJSXAttribute } from '../builders'
 import { traverse } from '../utils'
 
 const ctx = traverse(schema, {
-  nodeTree: buildJsx,
-  feature: {}
+  nodeTree: buildJSX,
+  feature: {
+    props: [ buildJSXAttribute ]
+  }
 })
 // console.log(ctx.ast)
-export default ctx.ast
+export default ctx.nodeTree

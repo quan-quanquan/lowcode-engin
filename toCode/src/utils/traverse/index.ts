@@ -9,7 +9,7 @@ export function traverse(node, builders) {
   if (node.children && node.children.length) {
     node.children.forEach(child => {
       const childCtx = traverse(child, builders)
-      ctx.setChild(childCtx.ast)
+      ctx.setChild(childCtx.nodeTree)
     })
   }
   ctx.buildSelf()

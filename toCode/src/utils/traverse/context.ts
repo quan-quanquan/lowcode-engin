@@ -4,8 +4,9 @@ export class TraversalContext {
   components = []
   node
   builders
+  nodeTree
+  features = {}
   ast
-  
 
   constructor(node, builders) {
     this.node = node
@@ -13,19 +14,24 @@ export class TraversalContext {
   }
 
   setFeature(key, featureAst) {
+    this.features[key] = featureAst
   }
 
   setChild(childAst) {
     this.children.push(childAst)
   }
 
+  setNodeTree(treeAst) {
+    this.nodeTree = treeAst
+  }
+
   buildSelf() {
     const { builders, node } = this
     for (const key in builders.feature) {
-      const feature = builders[key](this, node, key)
-      this.setFeature(key, feature)
+      builders.feature[key].forEach(builder => {
+        builder(this, node, key)
+      })
     }
-    const nodeTree = builders.nodeTree(this, node)
-    this.ast = nodeTree
+    builders.nodeTree(this, node)
   }
 }
