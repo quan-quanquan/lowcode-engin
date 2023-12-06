@@ -1,9 +1,9 @@
 import schema from '../schema/base.json'
-import { buildJSX, buildJSXAttribute } from '../builders'
+import { buildJSX, buildJSXAttribute, buildComponent } from '../builders'
 import { traverse } from '../utils'
 
 const ctx = traverse(schema, {
-  nodeTree: buildJSX,
+  node: [buildComponent, buildJSX],
   feature: {
     props: [ buildJSXAttribute ]
   }

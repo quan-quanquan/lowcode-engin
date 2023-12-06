@@ -1,4 +1,4 @@
-import { traverse } from "."
+import generate from "@babel/generator"
 export class TraversalContext {
   children = []
   components = []
@@ -21,8 +21,16 @@ export class TraversalContext {
     this.children.push(childAst)
   }
 
+  clearChildren() {
+    this.children = []
+  }
+
   setNodeTree(treeAst) {
     this.nodeTree = treeAst
+  }
+
+  generateComponent(componentAst) {
+    console.log(generate(componentAst).code)
   }
 
   buildSelf() {
@@ -32,6 +40,8 @@ export class TraversalContext {
         builder(this, node, key)
       })
     }
-    builders.nodeTree(this, node)
+    builders.node.forEach(builder => {
+      builder(this, node)
+    })
   }
 }
