@@ -1,4 +1,4 @@
-import { buildDefaultImport } from './'
+import { buildDefaultImport } from '.'
 import * as t from '@babel/types'
 import template from "@babel/template";
 

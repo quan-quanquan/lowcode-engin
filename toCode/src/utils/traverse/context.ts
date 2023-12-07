@@ -1,14 +1,14 @@
-import generate from "@babel/generator"
 export class TraversalContext {
   children = []
-  components = []
   node
+  builder
   builders
   nodeTree
   features = {}
   ast
 
-  constructor(node, builders) {
+  constructor(builder, node, builders) {
+    this.builder = builder
     this.node = node
     this.builders = builders
   }
@@ -30,7 +30,7 @@ export class TraversalContext {
   }
 
   generateComponent(componentAst) {
-    console.log(generate(componentAst).code)
+    this.builder.hooks.generate.call(componentAst)
   }
 
   buildSelf() {

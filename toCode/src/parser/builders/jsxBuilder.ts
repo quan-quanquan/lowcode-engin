@@ -1,5 +1,5 @@
 import * as t from '@babel/types'
-import { isString } from '../utils'
+import { isString } from '../../utils'
 
 function buildLiteralAttr(key, value) {
   return t.jSXAttribute(t.jsxIdentifier(key), t.stringLiteral(value))
