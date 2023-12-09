@@ -5,8 +5,9 @@ export default class Generator {
   builder
   constructor(builder) {
     this.builder = builder
-    this.builder.hooks.generate.tap('generate', (ast) => {
-      this.generate(ast)
+    this.builder.hooks.generate.tap('generate', async (ast) => {
+      const code = await this.generate(ast)
+      this.builder.hooks.emit.call('test.jsx', code)
     })
   }
   async generate(ast) {
