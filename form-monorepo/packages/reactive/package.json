@@ -1,0 +1,32 @@
+{
+  "name": "reactive",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "quanquan <925685036@qq.com>",
+  "homepage": "https://github.com/quan-quanquan/lowcode-engin#readme",
+  "license": "ISC",
+  "main": "src/index",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npm.taobao.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quan-quanquan/lowcode-engin.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/reactive.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/quan-quanquan/lowcode-engin/issues"
+  },
+  "dependencies": {
+    "mobx": "^6.12.0"
+  }
+}

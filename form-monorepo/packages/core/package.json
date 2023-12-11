@@ -18,5 +18,9 @@
   },
   "scripts": {
     "test": "node ./__tests__/core.test.js"
+  },
+  "dependencies": {
+    "mobx": "^6.12.0",
+    "reactive": "workspace:^"
   }
 }

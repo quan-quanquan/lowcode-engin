@@ -11,7 +11,12 @@ interface IProps {
 export function SemiForm(props: IProps) {
   const fields = props.schema.map(item => {
     const Component = FeildComponents[item.component]
-    return <Component key={item.name} field={item.name} {...item.props}/>
+    return <Component 
+      key={item.field} 
+      field={item.field} 
+      value={item.value}
+      {...item.props}
+    />
   })
   return <Form>
     {fields}
