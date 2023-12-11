@@ -1,1 +1,1 @@
-export { FormModel } from './models'
+export { FormModel, Schema } from './models'

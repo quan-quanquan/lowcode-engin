@@ -1,18 +1,23 @@
 
-import {FeildModel} from "./feildModel"
+import { FeildModel, FeildConfig } from "./feildModel"
 
-export class FormModel {
+export type Schema<T> = {
+  component: T,
+  [p: string]: any
+}[]
+export const a = 1
+export class FormModel<T> {
   feilds:any[] = []
-  creatFeild(name, config) {
-    const feild = new FeildModel()
+  creatFeild(name:string, config: FeildConfig<T>) {
+    const feild = new FeildModel<T>(name, config)
     this.feilds.push(feild)
   }
-  getSchema() {
+  getSchema(): Schema<T> {
     return this.feilds.map(feild => ({
       value: feild.value,
       feild: feild.name,
-      component: feild.component[0],
-      props: feild.component[1]
+      component: feild.config.component,
+      props: feild.config.componentProps
     })) 
   }
 }
