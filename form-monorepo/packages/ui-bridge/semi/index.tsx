@@ -1,24 +1,42 @@
 
-import React from 'react'
-import { Form } from '@douyinfe/semi-ui';
-import { FeildComponents } from './feilds'
-import { Schema } from 'core';
-export * from './feilds'
+import React, { useRef, useEffect, useState } from 'react'
+import { Form, useFormApi, withField, Input } from '@douyinfe/semi-ui';
+import { fieldComponents } from './fields'
+import { Schema, FormModel } from 'core';
+import { Observer } from 'mobx-react-lite'
+export * from './fields'
 
 interface IProps {
-  schema: Schema<FeildComponents>
+  model: FormModel<fieldComponents>
 }
 export function SemiForm(props: IProps) {
-  const fields = props.schema.map(item => {
-    const Component = FeildComponents[item.component]
-    return <Component 
-      key={item.field} 
-      field={item.field} 
-      value={item.value}
-      {...item.props}
-    />
-  })
-  return <Form>
-    {fields}
-  </Form>
+  const { model } = props
+  const schema = model.getSchema()
+  console.log(schema[0])
+
+  const formApi = useRef()
+  const setFormApi = (v: any) => {
+    console.log(v)
+    formApi.current = v
+    formApi.current.setValues(model.data, {isReactive: true})
+  }
+
+  return <Observer>
+    {
+      () => (
+        <Form getFormApi={setFormApi}>
+          {
+            schema.map(item => {
+              const Component = fieldComponents[item.component]
+              return <Component 
+                key={item.field} 
+                field={item.field}
+                {...item.props}
+              />
+            })
+          }
+        </Form>
+      )
+    }
+  </Observer>
 }

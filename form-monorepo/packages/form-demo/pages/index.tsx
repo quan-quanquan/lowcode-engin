@@ -1,7 +1,7 @@
 // import { Form } from '@douyinfe/semi-ui';
 import React from 'react'
 import './style.scss'
-import { SemiForm, FeildComponents } from 'ui-bridge'
+import { SemiForm, fieldComponents } from 'ui-bridge'
 import { FormModel, observable } from 'core'
 
 // const de = (value: any, context: any) => {
@@ -20,9 +20,9 @@ import { FormModel, observable } from 'core'
 // const t = new Test()
 // t.console()
 export default function FormContainer() {
-  const model = new FormModel<FeildComponents>()
+  const model = new FormModel<fieldComponents>()
   
-  model.creatFeild('name', {
+  model.creatfield('name', {
     component: 'Input',
     componentProps: {
       label: '姓名'
@@ -30,7 +30,7 @@ export default function FormContainer() {
     defaultValue: '罗拉'
   })
 
-  model.creatFeild('gender', {
+  model.creatfield('gender', {
     component: 'Select',
     componentProps: {
       label: '性别',
@@ -55,7 +55,7 @@ export default function FormContainer() {
       <Form.Input field='UserName' label='用户名' style={{ width: 80 }}/>
     </Form> */}
     <SemiForm
-      schema={model.getSchema()}
+      model={model}
     />
   </div>
 }

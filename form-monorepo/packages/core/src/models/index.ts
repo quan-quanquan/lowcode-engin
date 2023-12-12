@@ -1,2 +1,2 @@
-export * from './feildModel'
+export * from './fieldModel'
 export * from './formModel'

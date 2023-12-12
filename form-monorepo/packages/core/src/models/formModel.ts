@@ -1,5 +1,5 @@
 
-import { FeildModel, FeildConfig } from "./feildModel"
+import { fieldModel, fieldConfig } from "./fieldModel"
 import { observable, reaction } from "reactive"
 
 export type Schema<T> = {
@@ -8,23 +8,23 @@ export type Schema<T> = {
 }[]
 
 export class FormModel<T> {
-  feilds:any[] = []
+  fields:any[] = []
   data:any = observable({})
-  creatFeild(name:string, config: FeildConfig<T>) {
+  creatfield(name:string, config: fieldConfig<T>) {
     this.data[name] = config.defaultValue
-    const feild = new FeildModel<T>(name, this.data[name], config)
-    this.feilds.push(feild)
+    const field = new fieldModel<T>(name, this.data[name], config)
+    this.fields.push(field)
   }
   getSchema(): Schema<T> {
-    return this.feilds.map(feild => ({
-      value: feild.value,
-      feild: feild.name,
-      component: feild.config.component,
-      props: feild.config.componentProps
+    return this.fields.map(field => ({
+      value: field.value,
+      field: field.name,
+      component: field.config.component,
+      props: field.config.componentProps
     })) 
   }
-  setEffect(feild:string, effect:any) {
-    reaction(() => this.data[feild], effect)
+  setEffect(field:string, effect:any) {
+    reaction(() => this.data[field], effect)
   }
   test() {
     this.data.name = '罗娜'
