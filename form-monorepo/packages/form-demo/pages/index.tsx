@@ -46,6 +46,7 @@ export default function FormContainer() {
 
   model.setEffect('name', (value:any) => {
     console.log(value)
+    model.data.gender = 'woman'
   })
 
   model.test()

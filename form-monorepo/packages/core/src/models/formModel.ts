@@ -23,6 +23,9 @@ export class FormModel<T> {
       props: field.config.componentProps
     })) 
   }
+  getField(name) {
+    return this.fields.find(field => field.name === name)
+  }
   setEffect(field:string, effect:any) {
     reaction(() => this.data[field], effect)
   }
