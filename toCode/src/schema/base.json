@@ -77,8 +77,9 @@
       "componentName": "Page"
     }
   ],
-  "componentsTree": [
+  "children": [
     {
+      "type": "container",
       "componentName": "Page",
       "id": "node_dockcviv8fo1",
       "props": {

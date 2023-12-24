@@ -1,0 +1,21 @@
+{
+  "name": "ui-bridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "semi/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@douyinfe/semi-ui": "^2.48.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "core": "workspace:^",
+    "mobx-react": "^9.1.0",
+    "mobx-react-lite": "^4.0.5"
+  }
+}

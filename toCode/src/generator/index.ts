@@ -1,12 +1,19 @@
 import generator from "@babel/generator";
-import testAst from '../parser'
 import { format } from "../utils";
 
-export async function generatorCode(ast) {
-  let code = generator(ast).code
-  console.log(code)
-  code = await format(code)
-  console.log(code)
-  return code
+export default class Generator {
+  builder
+  constructor(builder) {
+    this.builder = builder
+    this.builder.hooks.generate.tap('generate', async (ast) => {
+      const code = await this.generate(ast)
+      this.builder.hooks.emit.call('test.jsx', code)
+    })
+  }
+  async generate(ast) {
+    let code = generator(ast).code
+    code = await format(code)
+    console.log(code)
+    return code
+  }
 }
-generatorCode(testAst)

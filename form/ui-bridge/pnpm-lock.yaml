@@ -1,0 +1,10 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  core:
+    specifier: workspace:^
+    version: link:../../form-monorepo/packages/core
